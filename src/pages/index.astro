@@ -7,293 +7,283 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 <!doctype html>
 <html lang="zh-CN">
-	<head>
-		<BaseHead title={`首页 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main class="home-container">
-			
-			<div class="hero">
-				<h1>
-					<span class="outline-text">OUCS</span><br />
-					牛津大学中国学联
-				</h1>
-				<p class="subtitle">连接牛津华人，传承中华文化</p>
-				<a href="/about" class="hero-cta">了解我们</a>
-			</div>
+    <head>
+        <BaseHead title={`首页 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main class="home-container">
+            
+            <div class="hero">
+				<img src="./.logo/logo_zi_transparent copy.png" alt="OUCS Logo" class="hero-logo" />
 
-			<div class="features">
-				<h2>探索我们的世界</h2>
-				<div class="feature-grid">
-					
-					<div class="feature-card">
-						<div class="feature-card-content">
-							<span class="card-icon">📢</span>
-							<h3>最新动态</h3>
-							<p>活动回顾、招新公告，与公众号同步。</p>
-							<a href="/blog" class="card-link">查看全部 <span class="arrow">→</span></a>
-						</div>
-					</div>
+                <h1>
+                    <span class="outline-text">OUCS</span><br />
+                    牛津大学中国学生会
+                </h1>
+                <p class="subtitle">连接牛津华人，传承中华文化</p>
+                <a href="/about" class="hero-cta">了解我们</a>
+            </div>
 
-					<div class="feature-card">
-						<div class="feature-card-content">
-							<span class="card-icon">📅</span>
-							<h3>精彩活动</h3>
-							<p>从 Formal exchange 到节日晚会，期待你的参与。</p>
-							<a href="/blog" class="card-link">近期活动 <span class="arrow">→</span></a>
-						</div>
-					</div>
+            <div class="features">
+                <h2>探索我们的世界</h2>
+                <div class="feature-grid">
+                    
+                    <div class="feature-card">
+                        <div class="feature-card-content">
+                            <span class="card-icon-wrapper"><span class="card-icon">📢</span></span>
+                            <h3>最新动态</h3>
+                            <p>活动回顾、招新公告，与公众号同步。</p>
+                            <a href="/blog" class="card-link">查看全部 <span class="arrow">→</span></a>
+                        </div>
+                    </div>
 
-					<div class="feature-card">
-						<div class="feature-card-content">
-							<span class="card-icon">🤝</span>
-							<h3>合作伙伴</h3>
-							<p>与全英及跨国组织合作，拓展平台。</p>
-							<a href="/blog" class="card-link">了解更多 <span class="arrow">→</span></a>
-						</div>
-					</div>
+                    <div class="feature-card">
+                        <div class="feature-card-content">
+                            <span class="card-icon-wrapper"><span class="card-icon">📅</span></span>
+                            <h3>精彩活动</h3>
+                            <p>从 Formal exchange 到节日晚会，期待你的参与。</p>
+                            <a href="/blog" class="card-link">近期活动 <span class="arrow">→</span></a>
+                        </div>
+                    </div>
 
-				</div>
-			</div>
+                    <div class="feature-card">
+                        <div class="feature-card-content">
+                            <span class="card-icon-wrapper"><span class="card-icon">🤝</span></span>
+                            <h3>合作伙伴</h3>
+                            <p>与全英及跨国组织合作，拓展平台。</p>
+                            <a href="/blog" class="card-link">了解更多 <span class="arrow">→</span></a>
+                        </div>
+                    </div>
 
-			<div class="join">
-				<div class="join-bg"></div>
-				<h1>准备好成为我们的一员了吗？</h1>
-				<p>无论是作为参与者还是 Committee，我们都欢迎你的到来。</p>
-				<a href="/about#join" class="hero-cta">立即加入</a>
-			</div>
+                </div>
+            </div>
 
-		</main>
-		<Footer />
-	</body>
+            <div class="join">
+                <div class="join-bg"></div>
+                <h1>准备好成为我们的一员了吗？</h1>
+                <p>无论是作为参与者还是 Committee，我们都欢迎你的到来。</p>
+                <a href="/about#join" class="hero-cta join-cta">立即加入</a>
+            </div>
+
+        </main>
+        <Footer />
+    </body>
 </html>
 
-
 <style>
-				/* 💡 覆盖全局：确保全站背景纯黑，文字纯白，无滚动条闪烁 */
-			:global(body) {
-				background-color: #ffffff;
-				color: #000000;
-				margin: 0;
-				overflow-x: hidden;
-			}
+    /* 💡 全局背景统一为纯白 */
+    :global(body) {
+        background-color: #ffffff;
+        color: #1a1a1a;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overflow-x: hidden;
+    }
 
-			/* 💡 首页专属通用容器：略微增加宽度，让布局更开阔 */
-			.home-container {
-				max-width: 1100px;
-				margin: 0 auto;
-				padding: 0 2rem;
-			}
+    .home-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
 
-			/* 💡 [Hero Section] - 赛博巨幅标题区 */
-			.hero {
-				height: calc(100vh - 80px); /* 减去 Header 高度，占满全屏 */
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: flex-start; /* 关键：左对齐，增加现代感 */
-				position: relative;
-			}
+    /* 💡 [Hero Section] */
+    .hero {
+        height: 85vh;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+    }
 
-			/* 💡 背景点缀：极微妙的渐变墨色，增加层次 */
-			.hero::before {
-				content: '';
-				position: absolute;
-				top: 0; left: 0; width: 100%; height: 100%;
-				background: radial-gradient(circle at top left, rgba(0, 33, 71, 0.2) 0%, rgba(255,255,255) 60%);
-				z-index: -1;
-			}
+    .hero h1 {
+        font-size: clamp(3.5rem, 8vw, 6.5rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        font-weight: 800;
+        color: #111;
+        margin: 0;
+    }
 
-			.hero h1 {
-				font-size: clamp(3rem, 10vw, 6rem); /* 响应式巨幅字体 */
-				line-height: 0.95;
-				letter-spacing: -0.05em;
-				font-weight: 900;
-				text-transform: uppercase;
-				color: #000000;
-				margin: 0;
-				max-width: 800px;
-			}
+    .hero h1 .outline-text {
+        color: transparent;
+        -webkit-text-stroke: 1.5px #111;
+        opacity: 0.15;
+        display: block;
+        margin-bottom: 0.2rem;
+    }
 
-			/* 💡 酷炫文字描边效果 */
-			.hero h1 .outline-text {
-				color: transparent;
-				-webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-			}
+    .hero .subtitle {
+        font-size: 1.4rem;
+        color: #555;
+        margin-top: 1.5rem;
+        margin-bottom: 3.5rem;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+    }
 
-			.hero .subtitle {
-				font-size: 1.5rem;
-				color: #aaaaaa;
-				margin-top: 1rem;
-				margin-bottom: 3rem;
-				font-weight: 300;
-			}
+    .hero-cta {
+        display: inline-block;
+        background-color: #111;
+        color: #fff;
+        padding: 1rem 2.5rem;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
 
-			/* 💡 首页 Hero 按钮：纯白发光 */
-			.hero-cta {
-				display: inline-block;
-				background-color: #000000;
-				color: #ffffff;
-				padding: 1rem 2.5rem;
-				text-decoration: none;
-				border-radius: 50px;
-				font-weight: bold;
-				transition: all 0.3s ease;
-				box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-			}
-			.hero-cta:hover {
-				transform: translateY(-3px) scale(1.02);
-				box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-			}
+    .hero-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        background-color: #002147; 
+    }
 
+    /* 💡 [Features Section] */
+    .features {
+        padding: 6rem 0 10rem;
+    }
 
-			/* 💡 [Features Section] - 功能板块区 */
-			.features {
-				padding: 8rem 0;
-			}
+    .features h2 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        color: #111;
+        margin-bottom: 4rem;
+        text-align: center;
+        font-weight: 800;
+    }
 
-			.features h2 {
-				font-size: 3rem;
-				text-transform: uppercase;
-				letter-spacing: -0.03em;
-				color: #000000;
-				margin-bottom: 5rem;
-				text-align: center;
-			}
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
 
-			.feature-grid {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 2.5rem;
-			}
+    /* 💡 纯白卡片保留极淡边框和微弱阴影以防与背景糊在一起 */
+    .feature-card {
+        background: #ffffff;
+        border: 1px solid #eaeaea;
+        padding: 3rem 2.5rem;
+        border-radius: 20px;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+    }
 
-			/* 💡 [Feature Card] - 酷炫卡片重写 */
-			.feature-card {
-				background: rgba(17, 17, 17, 0.8); /* 极暗灰色，比背景稍亮 */
-				border: 1px solid rgba(255, 255, 255, 0.08); /* 极细边框 */
-				padding: 3rem 2rem;
-				border-radius: 12px;
-				transition: all 0.4s ease;
-				cursor: pointer;
-				position: relative;
-				overflow: hidden;
-			}
+    .feature-card:hover {
+        transform: translateY(-8px);
+        border-color: #d1d5db;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
 
-			/* 💡 悬停效果：向上微移，增加蓝色光晕 */
-			.feature-card:hover {
-				transform: translateY(-8px);
-				border-color: rgba(0, 153, 255, 0.4);
-				box-shadow: 0 15px 50px rgba(0, 153, 255, 0.15);
-			}
+    .card-icon-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        background: #f3f4f6;
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+    }
 
-			/* 💡 卡片内墨色扩散背景动效 */
-			.feature-card::after {
-				content: '';
-				position: absolute;
-				bottom: -50%; right: -50%; width: 100%; height: 100%;
-				background: radial-gradient(circle, rgba(0, 33, 71, 0.3) 0%, rgba(0,0,0,0) 70%);
-				border-radius: 50%;
-				transition: transform 0.6s ease;
-				z-index: 0;
-			}
-			.feature-card:hover::after {
-				transform: scale(1.5);
-			}
+    .card-icon {
+        font-size: 2rem;
+    }
 
-			.feature-card-content {
-				position: relative;
-				z-index: 1; /* 确保内容在墨色背景之上 */
-			}
+    .feature-card h3 {
+        font-size: 1.5rem;
+        color: #111;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
 
-			.card-icon {
-				font-size: 3rem;
-				margin-bottom: 1.5rem;
-				display: block;
-			}
+    .feature-card p {
+        font-size: 1.05rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
 
-			.feature-card h3 {
-				font-size: 1.8rem;
-				color: #000000;
-				margin-top: 0;
-			}
+    .card-link {
+        color: #002147;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s ease;
+    }
 
-			.feature-card p {
-				font-size: 1.1rem;
-				color: #cccccc;
-				margin-bottom: 1.5rem;
-				font-weight: 300;
-			}
+    .card-link:hover {
+        gap: 0.8rem;
+        color: #0056b3;
+    }
 
-			.card-link {
-				color: #0099ff; /* 酷炫蓝色链接 */
-				font-weight: 600;
-				font-size: 1rem;
-				text-decoration: none;
-				display: inline-block;
-				transition: gap 0.3s;
-			}
-			.card-link:hover {
-				color: #000000;
-			}
-			.card-link .arrow {
-				transition: transform 0.3s;
-				display: inline-block;
-			}
-			.feature-card:hover .card-link .arrow {
-				transform: translateX(5px);
-			}
+    /* 💡 [Join Section] */
+    .join {
+        padding: 8rem 0;
+        text-align: center;
+        position: relative;
+        margin-top: 2rem;
+    }
 
+    .join-bg {
+        position: absolute;
+        top: 0; left: 50%; transform: translateX(-50%);
+        width: 100vw; height: 100%;
+        background: #ffffff; /* 底部区域背景也设为纯白 */
+        z-index: -1;
+    }
 
-			/* 💡 [Join Section] - 加入我们 */
-			.join {
-				padding: 10rem 0;
-				text-align: center;
-				position: relative;
-			}
+    .join h1 {
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        color: #111;
+        font-weight: 800;
+    }
 
-			/* 💡 底部区域背景：墨黑渐变，与上方分离 */
-			.join-bg {
-				position: absolute;
-				top: 0; left: 50%; transform: translateX(-50%);
-				width: 100vw; height: 100%;
-				background: linear-gradient(180deg, #000000 0%, #080808 100%);
-				border-top: 1px solid rgba(255, 255, 255, 0.05);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-				z-index: -1;
-			}
+    .join p {
+        font-size: 1.2rem;
+        color: #666; /* 适配白底的文字颜色 */
+        margin-bottom: 3.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
 
-			.join h2 {
-				font-size: clamp(2rem, 5vw, 4rem);
-				line-height: 1.1;
-				margin-bottom: 1.5rem;
-				color: #000000;
-			}
+    /* 底部纯黑按钮 */
+    .join-cta {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    .join-cta:hover {
+        background-color: #333333; /* 深灰色悬停效果 */
+        color: #ffffff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
 
-			.join p {
-				font-size: 1.3rem;
-				color: #cccccc;
-				margin-bottom: 4rem;
-				max-width: 700px;
-				margin-left: auto;
-				margin-right: auto;
-				font-weight: 300;
-			}
-
-
-			/* 💡 响应式适配：移动端布局 */
-			@media (max-width: 900px) {
-				.hero {
-					align-items: center;
-					text-align: center;
-				}
-				.feature-grid {
-					grid-template-columns: 1fr; /* 单列布局 */
-					gap: 3rem;
-				}
-				.join {
-					padding: 6rem 0;
-				}
-			}
-
+    /* 响应式适配 */
+    @media (max-width: 900px) {
+        .hero {
+            align-items: center;
+            text-align: center;
+        }
+        .feature-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .join {
+            padding: 6rem 0;
+        }
+    }
 </style>
