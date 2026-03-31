@@ -1,8 +1,8 @@
 /* src/styles/global.css - 干净优雅白底主题 */
 
 :root {
-	--accent: #002147; /* 牛津蓝 - 用于强调和按钮 */
-	--accent-light: #4d79ff;
+	--accent: #500f0a; /* 牛津蓝 - 用于强调和按钮 */
+	--accent-light: #500f0a;
 	--black: #111111; /* 最深的黑色，用于大标题 */
 	--gray-dark: #333333; /* 深灰，用于正文阅读，比纯黑更护眼 */
 	--gray: #666666;

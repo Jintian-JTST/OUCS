@@ -3,287 +3,384 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import myLogo from './.logo/logo_zi_transparent copy - 副本.png';
 ---
 
 <!doctype html>
 <html lang="zh-CN">
-    <head>
-        <BaseHead title={`首页 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main class="home-container">
-            
-            <div class="hero">
-				<img src="./.logo/logo_zi_transparent copy.png" alt="OUCS Logo" class="hero-logo" />
+  <head>
+    <BaseHead title={`首页 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <div id="site-header" class="site-header header-hidden">
+      <Header />
+    </div>
 
-                <h1>
-                    <span class="outline-text">OUCS</span><br />
-                    牛津大学中国学生会
-                </h1>
-                <p class="subtitle">连接牛津华人，传承中华文化</p>
-                <a href="/about" class="hero-cta">了解我们</a>
-            </div>
+    <main class="home">
+      <section class="splash">
+        <img
+          src={myLogo.src}
+          alt="OUCS Logo"
+          id="main-logo"
+          class="main-logo"
+        />
+      </section>
 
-            <div class="features">
-                <h2>探索我们的世界</h2>
-                <div class="feature-grid">
-                    
-                    <div class="feature-card">
-                        <div class="feature-card-content">
-                            <span class="card-icon-wrapper"><span class="card-icon">📢</span></span>
-                            <h3>最新动态</h3>
-                            <p>活动回顾、招新公告，与公众号同步。</p>
-                            <a href="/blog" class="card-link">查看全部 <span class="arrow">→</span></a>
-                        </div>
-                    </div>
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="eyebrow">Oxford University Chinese Society</p>
+<h1 class="title-container">
+    牛津大学中国学生会
+</h1>
+          <p class="subtitle">连接牛津华人，传承中华文化。</p>
 
-                    <div class="feature-card">
-                        <div class="feature-card-content">
-                            <span class="card-icon-wrapper"><span class="card-icon">📅</span></span>
-                            <h3>精彩活动</h3>
-                            <p>从 Formal exchange 到节日晚会，期待你的参与。</p>
-                            <a href="/blog" class="card-link">近期活动 <span class="arrow">→</span></a>
-                        </div>
-                    </div>
+          <div class="hero-actions">
+            <a href="/about" class="btn btn-primary">了解我们</a>
+            <a href="/blog" class="btn btn-secondary">最新动态</a>
+          </div>
+        </div>
+      </section>
 
-                    <div class="feature-card">
-                        <div class="feature-card-content">
-                            <span class="card-icon-wrapper"><span class="card-icon">🤝</span></span>
-                            <h3>合作伙伴</h3>
-                            <p>与全英及跨国组织合作，拓展平台。</p>
-                            <a href="/blog" class="card-link">了解更多 <span class="arrow">→</span></a>
-                        </div>
-                    </div>
+      <section class="features">
+        <h2>探索我们的世界</h2>
 
-                </div>
-            </div>
+        <div class="grid">
+          <article class="card">
+            <div class="icon">📢</div>
+            <h3>最新动态</h3>
+            <p>活动回顾、招新公告，与公众号同步更新。</p>
+            <a href="/blog">查看全部 →</a>
+          </article>
 
-            <div class="join">
-                <div class="join-bg"></div>
-                <h1>准备好成为我们的一员了吗？</h1>
-                <p>无论是作为参与者还是 Committee，我们都欢迎你的到来。</p>
-                <a href="/about#join" class="hero-cta join-cta">立即加入</a>
-            </div>
+          <article class="card">
+            <div class="icon">📅</div>
+            <h3>精彩活动</h3>
+            <p>从 Formal Exchange 到春节晚会，期待你的参与。</p>
+            <a href="/blog">近期活动 →</a>
+          </article>
 
-        </main>
-        <Footer />
-    </body>
+          <article class="card">
+            <div class="icon">🤝</div>
+            <h3>合作伙伴</h3>
+            <p>与全英及跨国组织合作，为成员拓展广阔平台。</p>
+            <a href="/blog">了解更多 →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="join">
+        <div class="join-inner">
+          <h2>准备好加入我们了吗？</h2>
+          <p>无论是作为活动参与者还是加入执委会，我们都欢迎你。</p>
+          <a href="/about#join" class="btn btn-primary">立即加入</a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      const header = document.getElementById('site-header');
+      const logo = document.getElementById('main-logo');
+
+      const threshold = () => window.innerHeight * 0.35;
+
+      function handleScroll() {
+        const scrolled = window.scrollY > threshold();
+
+        header.classList.toggle('header-visible', scrolled);
+        header.classList.toggle('header-hidden', !scrolled);
+
+        logo.classList.toggle('is-scrolled', scrolled);
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', handleScroll);
+      window.addEventListener('load', handleScroll);
+      handleScroll();
+    </script>
+  </body>
 </html>
 
 <style>
-    /* 💡 全局背景统一为纯白 */
-    :global(body) {
-        background-color: #ffffff;
-        color: #1a1a1a;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        overflow-x: hidden;
-    }
+  :global(html) {
+    scroll-behavior: smooth;
+  }
 
-    .home-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
+  :global(body) {
+    margin: 0;
+    background: #ffffff;
+    color: #111827;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+  }
 
-    /* 💡 [Hero Section] */
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .header-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+
+  .header-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .home {
+    width: 100%;
+  }
+
+  .splash {
+    position: relative;
+    height: 100vh;
+  }
+
+	.main-logo {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    /* 💡 1. 提高 z-index 到 30 (大于文字区域的 20)，让 Logo 在文字上方淡出，避免被瞬间盖住 */
+    z-index: 30; 
+    width: min(460px, 78vw);
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    
+    /* 💡 2. 缩短过度时间到 0.3s 或 0.4s，使用 ease-out 让快速滑动时响应更灵敏 */
+    transition: opacity 0.35s ease-out, transform 0.4s ease-out;
+    
+    /* 初次加载淡入 */
+    animation: fadeUpIn 1s ease 0.2s backwards;
+  }
+
+  /* 滚动时的状态 */
+  .main-logo.is-scrolled {
+    /* 💡 3. 加上 !important 强制优先生效，并删除了 animation: none 避免闪跳 */
+    opacity: 0 !important; 
+    /* 💡 4. 增加一个微微向上滑动的位移，让它有一种“被划走”的视觉差跟随感 */
+    transform: translate(-50%, -65%); 
+  }
+
+  /* 初始入场动画（加上微微上浮的效果，整体更高级） */
+  @keyframes fadeUpIn {
+    from { 
+      opacity: 0; 
+      transform: translate(-50%, calc(-50% + 40px));
+    }
+    to { 
+      opacity: 1; 
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .hero {
+    position: relative;
+    z-index: 20;
+    min-height: 78vh;
+    display: grid;
+    place-items: center;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .hero-inner {
+    width: min(760px, 100%);
+    text-align: center;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
+
+  /* 请根据您网页的实际布局调整以下选择器 */
+	.title-container {
+    display: flex;
+    justify-content: center; /* 居中 */
+    white-space: nowrap;      /* 强制不换行 */
+}
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #500f0a;
+  }
+
+  .subtitle {
+    max-width: 640px;
+    margin: 1.5rem auto 0;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    line-height: 1.75;
+    color: #4b5563;
+  }
+
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    padding: 1rem 1.6rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 650;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background: #500f0a;
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(0, 33, 71, 0.16);
+  }
+
+  .btn-primary:hover {
+    background: #003366;
+  }
+
+  .btn-secondary {
+    background: rgba(0, 33, 71, 0.04);
+    color: #500f0a;
+    border: 1px solid rgba(0, 33, 71, 0.14);
+  }
+
+  .features {
+    padding: 7rem 1.5rem;
+  }
+
+  .features h2 {
+    margin: 0 0 2.5rem;
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: #111827;
+    letter-spacing: -0.03em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+  }
+
+  .card {
+    padding: 2rem;
+    border-radius: 24px;
+    border: 1px solid #eef2f7;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  }
+
+  .icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: #f3f7fb;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.2rem;
+    color: #111827;
+  }
+
+  .card p {
+    margin: 0 0 1.25rem;
+    color: #6b7280;
+    line-height: 1.7;
+  }
+
+  .card a {
+    color: #500f0a;
+    text-decoration: none;
+    font-weight: 650;
+  }
+
+  .join {
+    padding: 1.5rem 1.5rem 5rem;
+  }
+
+  .join-inner {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 32px;
+    background: #f8fafc;
+  }
+
+  .join h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #111827;
+    letter-spacing: -0.03em;
+  }
+
+  .join p {
+    margin: 1rem auto 0;
+    max-width: 700px;
+    color: #6b7280;
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+
+  .join .btn-primary {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
     .hero {
-        height: 85vh;
-        min-height: 600px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        position: relative;
+      min-height: 72vh;
+      padding-top: 1rem;
     }
 
-    .hero h1 {
-        font-size: clamp(3.5rem, 8vw, 6.5rem);
-        line-height: 1.05;
-        letter-spacing: -0.02em;
-        font-weight: 800;
-        color: #111;
-        margin: 0;
+    .main-logo {
+      width: min(320px, 82vw);
     }
 
-    .hero h1 .outline-text {
-        color: transparent;
-        -webkit-text-stroke: 1.5px #111;
-        opacity: 0.15;
-        display: block;
-        margin-bottom: 0.2rem;
-    }
-
-    .hero .subtitle {
-        font-size: 1.4rem;
-        color: #555;
-        margin-top: 1.5rem;
-        margin-bottom: 3.5rem;
-        font-weight: 400;
-        letter-spacing: 0.02em;
-    }
-
-    .hero-cta {
-        display: inline-block;
-        background-color: #111;
-        color: #fff;
-        padding: 1rem 2.5rem;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-    }
-
-    .hero-cta:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        background-color: #002147; 
-    }
-
-    /* 💡 [Features Section] */
     .features {
-        padding: 6rem 0 10rem;
+      padding-top: 5rem;
     }
 
-    .features h2 {
-        font-size: 2.5rem;
-        letter-spacing: -0.02em;
-        color: #111;
-        margin-bottom: 4rem;
-        text-align: center;
-        font-weight: 800;
+    .join-inner {
+      padding: 3rem 1.25rem;
     }
-
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    /* 💡 纯白卡片保留极淡边框和微弱阴影以防与背景糊在一起 */
-    .feature-card {
-        background: #ffffff;
-        border: 1px solid #eaeaea;
-        padding: 3rem 2.5rem;
-        border-radius: 20px;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        cursor: pointer;
-        position: relative;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
-    }
-
-    .feature-card:hover {
-        transform: translateY(-8px);
-        border-color: #d1d5db;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    }
-
-    .card-icon-wrapper {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 64px;
-        height: 64px;
-        background: #f3f4f6;
-        border-radius: 16px;
-        margin-bottom: 1.5rem;
-    }
-
-    .card-icon {
-        font-size: 2rem;
-    }
-
-    .feature-card h3 {
-        font-size: 1.5rem;
-        color: #111;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        font-weight: 700;
-    }
-
-    .feature-card p {
-        font-size: 1.05rem;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-    }
-
-    .card-link {
-        color: #002147;
-        font-weight: 600;
-        font-size: 1rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: gap 0.3s ease;
-    }
-
-    .card-link:hover {
-        gap: 0.8rem;
-        color: #0056b3;
-    }
-
-    /* 💡 [Join Section] */
-    .join {
-        padding: 8rem 0;
-        text-align: center;
-        position: relative;
-        margin-top: 2rem;
-    }
-
-    .join-bg {
-        position: absolute;
-        top: 0; left: 50%; transform: translateX(-50%);
-        width: 100vw; height: 100%;
-        background: #ffffff; /* 底部区域背景也设为纯白 */
-        z-index: -1;
-    }
-
-    .join h1 {
-        font-size: clamp(2.2rem, 5vw, 3.5rem);
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        color: #111;
-        font-weight: 800;
-    }
-
-    .join p {
-        font-size: 1.2rem;
-        color: #666; /* 适配白底的文字颜色 */
-        margin-bottom: 3.5rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.6;
-    }
-
-    /* 底部纯黑按钮 */
-    .join-cta {
-        background-color: #000000;
-        color: #ffffff;
-    }
-    .join-cta:hover {
-        background-color: #333333; /* 深灰色悬停效果 */
-        color: #ffffff;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    /* 响应式适配 */
-    @media (max-width: 900px) {
-        .hero {
-            align-items: center;
-            text-align: center;
-        }
-        .feature-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        .join {
-            padding: 6rem 0;
-        }
-    }
+  }
 </style>
